@@ -7,7 +7,9 @@ public class ChecksumCalculator {
     public static int checksum(String spreadsheet) {
         return Stream.of(spreadsheet.split("\\n"))
                 .mapToInt(ChecksumCalculator::difference)
-                .sum();
+                .reduce(0, (a, b) -> a + b);
+                //.sum();
+
     }
 
     public static int difference(String row) {
